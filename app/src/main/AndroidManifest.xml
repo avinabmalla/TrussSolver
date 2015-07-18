@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.avinab.trusssolver"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.avinab.trusssolver.ui.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.avinab.trusssolver.ui.AboutActivity"
+
+            android:label="@string/title_activity_about">
+        </activity>
+
+        <activity
+            android:name="com.avinab.trusssolver.ui.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/SettingsTheme">
+        </activity>
+
+        <service android:name="com.avinab.trusssolver.ui.UpdateTimer"/>
+
+    </application>
+
+</manifest>

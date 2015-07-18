@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="pref_key_grid"
+        android:title="Grid">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_grid"
+            android:title="Show Grid"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pref_key_precision"
+        android:title="Display Precision">
+
+        <ListPreference
+            android:defaultValue="0.00"
+            android:entries="@array/precision_options_titles"
+            android:entryValues="@array/precision_options"
+            android:key="pref_load_precision"
+            android:title="Applied Loads"/>
+
+        <ListPreference
+            android:defaultValue="0.00"
+            android:entries="@array/precision_options_titles"
+            android:entryValues="@array/precision_options"
+            android:key="pref_mem_force_precision"
+            android:title="Member Forces"/>
+
+        <ListPreference
+            android:defaultValue="0.000"
+            android:entries="@array/precision_options_titles"
+            android:entryValues="@array/precision_options"
+            android:key="pref_reaction_precision"
+            android:title="Reactions"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,75 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/action_add_node"
+        android:icon="@drawable/ic_add_node"
+        android:title="@string/lbl_add_node"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_add_member"
+        android:checkable="true"
+        android:icon="@drawable/ic_add_member"
+        android:title="@string/lbl_add_member"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_add_support"
+        android:icon="@drawable/ic_add_hinge"
+        android:title="@string/lbl_add_support"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_add_hinge"
+                android:icon="@drawable/ic_add_hinge"
+                android:title="@string/lbl_add_hinge"/>
+            <item
+                android:id="@+id/action_add_roller"
+                android:icon="@drawable/ic_add_roller"
+                android:title="@string/lbl_add_roller"/>
+            <item
+                android:id="@+id/action_add_roller_horz"
+                android:icon="@drawable/ic_add_hroller"
+                android:title="@string/lbl_add_roller_horz"/>
+
+
+            <item
+                android:id="@+id/action_remove_support"
+                android:icon="@android:drawable/ic_menu_delete"
+                android:title="@string/lbl_remove_support"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_add_load"
+        android:icon="@drawable/ic_add_load"
+        android:title="@string/lbl_add_load"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/action_zoom_extents"
+        android:orderInCategory="100"
+        android:title="Zoom Extents"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_solve"
+        android:orderInCategory="100"
+        android:title="Solve"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="About"
+        app:showAsAction="never"/>
+
+</menu>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TrussSolver</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="lbl_add_node">Add Node</string>
+    <string name="lbl_add_member">Add Member</string>
+    <string name="lbl_add_load">Add Load</string>
+    <string name="lbl_add_support">Add Support</string>
+    <string name="lbl_add_hinge">Hinge Support</string>
+    <string name="lbl_add_roller">Roller Support</string>
+    <string name="lbl_add_roller_horz">Roller Support (Horizontal)</string>
+    <string name="lbl_remove_support">Delete Support</string>
+    <string name="lbl_add_fixed">Fixed Support</string>
+    <string name="lbl_add_point_load">Point Load</string>
+    <string name="lbl_add_distributed_load">Distributed</string>
+    <string name="lbl_add_moment_load">Moment</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string-array name="node_types">
+        <item>Rigid</item>
+        <item>Pin</item>
+        <item>Internal Roller</item>
+    </string-array>
+
+    <string-array name="moment_direction">
+        <item>Clockwise</item>
+        <item>Counter-Clockwise</item>
+    </string-array>
+
+    <string-array name="precision_options_titles">
+        <item>1dp (0.0)</item>
+        <item>2dp (0.00)</item>
+        <item>3dp (0.000)</item>
+        <item>4dp (0.0000))</item>
+        <item>5dp (0.00000)</item>
+    </string-array>
+    <string-array name="precision_options">
+        <item>0.0</item>
+        <item>0.00</item>
+        <item>0.000</item>
+        <item>0.0000</item>
+        <item>0.00000</item>
+    </string-array>
+</resources>

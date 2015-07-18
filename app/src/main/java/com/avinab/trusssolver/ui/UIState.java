@@ -1,0 +1,19 @@
+package com.avinab.trusssolver.ui;
+
+/**
+ * Avinab
+ * 11/15/2014.
+ */
+public enum UIState
+{
+	NONE,
+	ADD_NODE,
+	ADD_MEMBER,
+	ADD_HINGE_SUPPORT,
+	ADD_ROLLER_SUPPORT,
+	ADD_HROLLER_SUPPORT,
+	DELETE_SUPPORT,
+	ADD_POINT_LOAD,
+	SELECTED,
+	LONG_SELECTED
+}

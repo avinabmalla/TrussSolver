@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:text="Young&apos;s Modulus (GPa)"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+    <EditText
+        android:id="@+id/txtMemberE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_toLeftOf="@+id/btnCalcE"
+        android:layout_toStartOf="@+id/btnCalcE"
+        android:ems="10"
+        android:gravity="end"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"
+        android:text="125242"/>
+
+    <EditText
+        android:id="@+id/txtMemberArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblAreaLabel"
+        android:layout_toLeftOf="@+id/btnCalcA"
+        android:layout_toStartOf="@+id/btnCalcA"
+        android:ems="10"
+        android:gravity="end"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"/>
+
+    <TextView
+        android:id="@+id/lblAreaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMemberE"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="Area (sq. mm)"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+    <ImageButton
+        android:id="@+id/btnCalcA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtMemberArea"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtMemberArea"
+        android:adjustViewBounds="true"
+        android:maxWidth="60dp"
+        android:minWidth="50dp"
+        android:nestedScrollingEnabled="false"
+        android:padding="0dp"
+        android:src="@drawable/ic_calculator"/>
+
+    <ImageButton
+        android:id="@+id/btnCalcE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtMemberE"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtMemberE"
+        android:adjustViewBounds="true"
+        android:maxWidth="40dp"
+        android:minWidth="40dp"
+        android:nestedScrollingEnabled="false"
+        android:padding="0dp"
+        android:src="@drawable/ic_calculator"/>
+
+
+</RelativeLayout>
