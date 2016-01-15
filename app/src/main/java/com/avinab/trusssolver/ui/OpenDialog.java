@@ -116,7 +116,7 @@ public class OpenDialog extends DialogFragment
 						if (ctx instanceof MainActivity)
 						{
 							MainActivity activity = (MainActivity) ctx;
-							activity.trussView.ZoomExtents();
+							activity.viewControl.ZoomExtents();
 						}
 						dlg.dismiss();
 					}

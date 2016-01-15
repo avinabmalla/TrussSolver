@@ -10,7 +10,7 @@ import com.avinab.trusssolver.data.Node;
 import com.avinab.trusssolver.data.Truss;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.Drawable;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 import java.text.DecimalFormat;
 
@@ -62,10 +62,10 @@ public abstract class Support implements Drawable
 		return Parent.getNode(supportNode);
 	}
 
-	public void DrawReactions(Canvas canvas, TrussView trussView)
+	public void DrawReactions(Canvas canvas, ViewControl viewControl)
 	{
 
-		DecimalFormat df = new DecimalFormat(PreferenceManager.getDefaultSharedPreferences(trussView.getContext()).getString("pref_reaction_precision", "0.000"));
+		DecimalFormat df = new DecimalFormat(PreferenceManager.getDefaultSharedPreferences(viewControl.getContext()).getString("pref_reaction_precision", "0.000"));
 		Paint pnt = ReactionPaint;
 
 
@@ -73,7 +73,7 @@ public abstract class Support implements Drawable
 		{
 			//Draw X reaction
 			int dirX = Reaction.X < 0 ? +1 : -1;
-			Vector2D p = trussView.toDrawableCoord(this.getNode().Location);
+			Vector2D p = viewControl.toDrawableCoord(this.getNode().Location);
 			p.X += 10 * dirX;
 
 			Vector2D px = new Vector2D(p.X + 60 * dirX, p.Y);
@@ -91,7 +91,7 @@ public abstract class Support implements Drawable
 		if (Math.abs(Reaction.Y) > 0.00001)
 		{
 			//Draw Y reaction
-			Vector2D p = trussView.toDrawableCoord(this.getNode().Location);
+			Vector2D p = viewControl.toDrawableCoord(this.getNode().Location);
 			int dirY = Reaction.Y > 0 ? +1 : -1;
 			p.Y += 10 * dirY;
 
@@ -116,11 +116,11 @@ public abstract class Support implements Drawable
 		}
 	}
 
-	public abstract void Draw(Canvas canvas, TrussView view);
+	public abstract void Draw(Canvas canvas, ViewControl view);
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
-		return this.getNode().getBounds(trussView);
+		return this.getNode().getBounds(viewControl);
 	}
 }

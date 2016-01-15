@@ -12,7 +12,7 @@ import com.avinab.trusssolver.data.Bounds;
  */
 public interface Drawable
 {
-	void Draw(Canvas canvas, TrussView trussView);
+	void Draw(Canvas canvas, ViewControl viewControl);
 
-	Bounds getBounds(TrussView trussView);
+	Bounds getBounds(ViewControl viewControl);
 }

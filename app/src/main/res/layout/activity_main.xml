@@ -16,7 +16,7 @@
 
     <view
         android:id="@+id/frameView"
-        class="com.avinab.trusssolver.widgets.TrussView"
+        class="com.avinab.trusssolver.widgets.ViewControl"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"

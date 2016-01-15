@@ -41,7 +41,7 @@ public class InfoBox implements Drawable
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView frameView)
+	public void Draw(Canvas canvas, ViewControl frameView)
 	{
 		if (!isVisible || text == null) return;
 
@@ -74,7 +74,7 @@ public class InfoBox implements Drawable
 
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
 		return null;
 	}

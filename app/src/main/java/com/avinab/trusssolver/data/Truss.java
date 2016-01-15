@@ -12,7 +12,7 @@ import com.avinab.trusssolver.data.supports.Support;
 import com.avinab.trusssolver.math.Matrix;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.Drawable;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 import java.util.ArrayList;
 
@@ -56,14 +56,14 @@ public class Truss implements Drawable
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView trussView)
+	public void Draw(Canvas canvas, ViewControl viewControl)
 	{
 
 		if (!Solved)
 		{
 			for (Member e : Members)
 			{
-				e.Draw(canvas, trussView);
+				e.Draw(canvas, viewControl);
 			}
 		} else
 		{
@@ -97,37 +97,37 @@ public class Truss implements Drawable
 
 			for (Member m : Members)
 			{
-				m.DrawSolvedMember(trussView, canvas, maxTF, maxCF, minTF, minCF);
+				m.DrawSolvedMember(viewControl, canvas, maxTF, maxCF, minTF, minCF);
 			}
 
 		}
 
 		for (HingeSupport s : HingeSupports)
 		{
-			s.Draw(canvas, trussView);
-			if (Solved) s.DrawReactions(canvas, trussView);
+			s.Draw(canvas, viewControl);
+			if (Solved) s.DrawReactions(canvas, viewControl);
 		}
 
 		for (RollerSupport s : RollerSupports)
 		{
-			s.Draw(canvas, trussView);
-			if (Solved) s.DrawReactions(canvas, trussView);
+			s.Draw(canvas, viewControl);
+			if (Solved) s.DrawReactions(canvas, viewControl);
 		}
 
 
 		for (Load load : PointLoads)
 		{
-			load.Draw(canvas, trussView);
+			load.Draw(canvas, viewControl);
 		}
 
 		for (Node n : Nodes)
 		{
-			n.Draw(canvas, trussView);
+			n.Draw(canvas, viewControl);
 		}
 	}
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
 		Bounds ret = null;
 
@@ -135,34 +135,34 @@ public class Truss implements Drawable
 		{
 			if (ret == null)
 			{
-				ret = n.getBounds(trussView);
+				ret = n.getBounds(viewControl);
 			} else
 			{
-				ret.add(n.getBounds(trussView));
+				ret.add(n.getBounds(viewControl));
 			}
 		}
 
 		if (ret == null) return new Bounds(-250, -250, 250, 250);
 		for (Member e : Members)
 		{
-			ret.add(e.getBounds(trussView));
+			ret.add(e.getBounds(viewControl));
 		}
 
 
 		for (HingeSupport s : HingeSupports)
 		{
-			ret.add(s.getBounds(trussView));
+			ret.add(s.getBounds(viewControl));
 		}
 
 		for (RollerSupport s : RollerSupports)
 		{
-			ret.add(s.getBounds(trussView));
+			ret.add(s.getBounds(viewControl));
 		}
 
 
 		for (Load load : PointLoads)
 		{
-			ret.add(load.getBounds(trussView));
+			ret.add(load.getBounds(viewControl));
 		}
 
 

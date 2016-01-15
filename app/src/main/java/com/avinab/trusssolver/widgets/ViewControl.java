@@ -31,7 +31,7 @@ import java.util.TimerTask;
  * Avinab
  * 10/12/2014.
  */
-public class TrussView extends View
+public class ViewControl extends View
 {
 	public Vector2D origin = new Vector2D(0, 0); //Bottom Left
 	public float zoom = 20;
@@ -44,7 +44,7 @@ public class TrussView extends View
 	Context ctx;
 
 
-	public TrussView(Context context)
+	public ViewControl(Context context)
 	{
 		super(context);
 		ctx = context;
@@ -54,7 +54,7 @@ public class TrussView extends View
 
 	}
 
-	public TrussView(Context context, AttributeSet attrs)
+	public ViewControl(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		infoBox = new InfoBox();
@@ -64,7 +64,7 @@ public class TrussView extends View
 
 	}
 
-	public TrussView(Context context, AttributeSet attrs, int defStyleAttr)
+	public ViewControl(Context context, AttributeSet attrs, int defStyleAttr)
 	{
 		super(context, attrs, defStyleAttr);
 		infoBox = new InfoBox();
@@ -265,7 +265,7 @@ public class TrussView extends View
 
 		for (Member m : Global.CurrentTruss.Members)
 		{
-			double dist = m.DistanceFromPoint(touchPoint.X, touchPoint.Y, TrussView.this);
+			double dist = m.DistanceFromPoint(touchPoint.X, touchPoint.Y, ViewControl.this);
 			if (dist < closestDistance)
 			{
 				closestDistance = dist;
@@ -288,7 +288,7 @@ public class TrussView extends View
 
 		for (Load pl : Global.CurrentTruss.PointLoads)
 		{
-			double dist = pl.DistanceFromPoint(touchPoint.X, touchPoint.Y, TrussView.this);
+			double dist = pl.DistanceFromPoint(touchPoint.X, touchPoint.Y, ViewControl.this);
 			if (dist < closestDistance)
 			{
 				closestDistance = dist;
@@ -335,7 +335,7 @@ public class TrussView extends View
 				double X = origin.X + v / zoom;
 				double Y = origin.Y - v2 / zoom;
 
-				Bounds bnds = Global.CurrentTruss.getBounds(TrussView.this);
+				Bounds bnds = Global.CurrentTruss.getBounds(ViewControl.this);
 
 				if (bnds.maxX < X)
 				{
@@ -347,14 +347,14 @@ public class TrussView extends View
 					Y = bnds.maxY;
 				}
 
-				if ((bnds.minX - X) * zoom > TrussView.this.getWidth())
+				if ((bnds.minX - X) * zoom > ViewControl.this.getWidth())
 				{
-					X = bnds.minX - (TrussView.this.getWidth() - 1) / zoom;
+					X = bnds.minX - (ViewControl.this.getWidth() - 1) / zoom;
 				}
 
-				if ((bnds.minY - Y) * zoom > TrussView.this.getHeight())
+				if ((bnds.minY - Y) * zoom > ViewControl.this.getHeight())
 				{
-					Y = bnds.minY - (TrussView.this.getHeight() - 1) / zoom;
+					Y = bnds.minY - (ViewControl.this.getHeight() - 1) / zoom;
 				}
 
 

@@ -108,10 +108,10 @@ public class AddLoadDialog extends DialogFragment
 		ImageSpan q3 = new ImageSpan(ctx, R.drawable.ic_quad_3);
 		ImageSpan q4 = new ImageSpan(ctx, R.drawable.ic_quad_4);
 
-		SpannableString content1 = new SpannableString("X");
-		SpannableString content2 = new SpannableString("X");
-		SpannableString content3 = new SpannableString("X");
-		SpannableString content4 = new SpannableString("X");
+		SpannableString content1 = new SpannableString("_");
+		SpannableString content2 = new SpannableString("_");
+		SpannableString content3 = new SpannableString("_");
+		SpannableString content4 = new SpannableString("_");
 
 		content1.setSpan(q1, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		tbtnQuad1.setText(content1);

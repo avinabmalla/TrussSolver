@@ -24,13 +24,13 @@ import com.avinab.trusssolver.data.Truss;
 import com.avinab.trusssolver.data.TrussIO;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.TrussItemSelectListener;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {
 	public static UIState uiState = UIState.NONE;
-	public TrussView trussView;
+	public ViewControl viewControl;
 	protected ActionMode mActionMode;
 	int MemberNodeID = -1;//-1 when no node is selected
 	private ActionMode.Callback mActionModeCallback = new ActionMode.Callback()
@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		public void onDestroyActionMode(ActionMode actionMode)
 		{
 			Global.CurrentTruss.UnselectAll();
-			trussView.infoBox.isVisible = false;
+			viewControl.infoBox.isVisible = false;
 		}
 	};
 	public TrussItemSelectListener trussItemSelectListener = new TrussItemSelectListener()
@@ -137,8 +137,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 				if (mActionMode != null) mActionMode.finish();
 				Global.CurrentTruss.UnselectAll();
 				n.Select();
-				trussView.infoBox.setText(n.getText());
-				trussView.infoBox.isVisible = true;
+				viewControl.infoBox.setText(n.getText());
+				viewControl.infoBox.isVisible = true;
 
 				mActionMode = MainActivity.this.startSupportActionMode(mActionModeCallback);
 			}
@@ -160,8 +160,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 				if (mActionMode != null) mActionMode.finish();
 				Global.CurrentTruss.UnselectAll();
 				m.Select();
-				trussView.infoBox.setText(m.getText(getApplicationContext()));
-				trussView.infoBox.isVisible = true;
+				viewControl.infoBox.setText(m.getText(getApplicationContext()));
+				viewControl.infoBox.isVisible = true;
 				mActionMode = MainActivity.this.startSupportActionMode(mActionModeCallback);
 			}
 
@@ -183,8 +183,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 				if (mActionMode != null) mActionMode.finish();
 				Global.CurrentTruss.UnselectAll();
 				dl.Select();
-				trussView.infoBox.setText(dl.getText(getApplicationContext()));
-				trussView.infoBox.isVisible = true;
+				viewControl.infoBox.setText(dl.getText(getApplicationContext()));
+				viewControl.infoBox.isVisible = true;
 				mActionMode = MainActivity.this.startSupportActionMode(mActionModeCallback);
 			}
 			return true;
@@ -213,7 +213,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		@Override
 		public void onReceive(Context context, Intent intent)
 		{
-			trussView.Update();
+			viewControl.Update();
 		}
 	};
 
@@ -222,7 +222,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		this.trussView = (TrussView) findViewById(R.id.frameView);
+		this.viewControl = (ViewControl) findViewById(R.id.frameView);
 		startService(new Intent(this, UpdateTimer.class));
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -235,8 +235,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		try
 		{
 			Global.CurrentTruss = Global.trussIO.OpenCache();
-			trussView.origin = new Vector2D(Double.parseDouble(Global.trussIO.GetAttribute("Ox")), Double.parseDouble(Global.trussIO.GetAttribute("Oy")));
-			trussView.zoom = Float.parseFloat(Global.trussIO.GetAttribute("zoom"));
+			viewControl.origin = new Vector2D(Double.parseDouble(Global.trussIO.GetAttribute("Ox")), Double.parseDouble(Global.trussIO.GetAttribute("Oy")));
+			viewControl.zoom = Float.parseFloat(Global.trussIO.GetAttribute("zoom"));
 		} catch (Exception ex)
 		{
 			ex.printStackTrace();
@@ -246,8 +246,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
 		if (savedInstanceState != null)
 		{
-			trussView.origin = new Vector2D(savedInstanceState.getDouble("Ox"), savedInstanceState.getDouble("Oy"));
-			trussView.zoom = savedInstanceState.getFloat("zoom");
+			viewControl.origin = new Vector2D(savedInstanceState.getDouble("Ox"), savedInstanceState.getDouble("Oy"));
+			viewControl.zoom = savedInstanceState.getFloat("zoom");
 
 		}
 
@@ -270,7 +270,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		};
 		rTimer.schedule(rTask, 10, 50);
 */
-		trussView.setSelectListener(trussItemSelectListener);
+		viewControl.setSelectListener(trussItemSelectListener);
 	}
 
 	@Override
@@ -296,9 +296,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		//stopService(intent);
 
 		Global.trussIO.SaveAsCache(Global.CurrentTruss);
-		Global.trussIO.WriteAttribute("Ox", trussView.origin.X + "");
-		Global.trussIO.WriteAttribute("Oy", trussView.origin.Y + "");
-		Global.trussIO.WriteAttribute("zoom", trussView.zoom + "");
+		Global.trussIO.WriteAttribute("Ox", viewControl.origin.X + "");
+		Global.trussIO.WriteAttribute("Oy", viewControl.origin.Y + "");
+		Global.trussIO.WriteAttribute("zoom", viewControl.zoom + "");
 	}
 
 	@Override
@@ -311,8 +311,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		try
 		{
 			Global.CurrentTruss = Global.trussIO.OpenCache();
-			trussView.origin = new Vector2D(Double.parseDouble(Global.trussIO.GetAttribute("Ox")), Double.parseDouble(Global.trussIO.GetAttribute("Oy")));
-			trussView.zoom = Float.parseFloat(Global.trussIO.GetAttribute("zoom"));
+			viewControl.origin = new Vector2D(Double.parseDouble(Global.trussIO.GetAttribute("Ox")), Double.parseDouble(Global.trussIO.GetAttribute("Oy")));
+			viewControl.zoom = Float.parseFloat(Global.trussIO.GetAttribute("zoom"));
 		} catch (Exception ex)
 		{
 			Global.CurrentTruss = new Truss(null);
@@ -333,7 +333,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 				if (position == 0)
 				{
 					Global.CurrentTruss.Reset();
-					trussView.infoBox.isVisible = false;
+					viewControl.infoBox.isVisible = false;
 
 				} else if (position == 1)
 				{
@@ -354,9 +354,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 	{
 		Intent in = new Intent(this, AboutActivity.class);
 		Global.trussIO.SaveAsCache(Global.CurrentTruss);
-		Global.trussIO.WriteAttribute("Ox", trussView.origin.X + "");
-		Global.trussIO.WriteAttribute("Oy", trussView.origin.Y + "");
-		Global.trussIO.WriteAttribute("zoom", trussView.zoom + "");
+		Global.trussIO.WriteAttribute("Ox", viewControl.origin.X + "");
+		Global.trussIO.WriteAttribute("Oy", viewControl.origin.Y + "");
+		Global.trussIO.WriteAttribute("zoom", viewControl.zoom + "");
 		startActivity(in);
 	}
 
@@ -432,7 +432,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 			return true;
 		} else if (id == R.id.action_zoom_extents)
 		{
-			trussView.ZoomExtents();
+			viewControl.ZoomExtents();
 		} else if (id == R.id.action_solve)
 		{
 			Global.CurrentTruss.solve();
@@ -446,9 +446,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		{
 			Intent in = new Intent(this, SettingsActivity.class);
 			Global.trussIO.SaveAsCache(Global.CurrentTruss);
-			Global.trussIO.WriteAttribute("Ox", trussView.origin.X + "");
-			Global.trussIO.WriteAttribute("Oy", trussView.origin.Y + "");
-			Global.trussIO.WriteAttribute("zoom", trussView.zoom + "");
+			Global.trussIO.WriteAttribute("Ox", viewControl.origin.X + "");
+			Global.trussIO.WriteAttribute("Oy", viewControl.origin.Y + "");
+			Global.trussIO.WriteAttribute("zoom", viewControl.zoom + "");
 			startActivity(in);
 		}
 

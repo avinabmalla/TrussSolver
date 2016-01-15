@@ -28,13 +28,13 @@ public class Grid implements Drawable
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView trussView)
+	public void Draw(Canvas canvas, ViewControl viewControl)
 	{
 		int w = canvas.getWidth();
 		int h = canvas.getHeight();
 
-		Vector2D topleft = trussView.toRealCoord(new Vector2D(0, 0));
-		Vector2D bottomright = trussView.toRealCoord(new Vector2D(w, h));
+		Vector2D topleft = viewControl.toRealCoord(new Vector2D(0, 0));
+		Vector2D bottomright = viewControl.toRealCoord(new Vector2D(w, h));
 
 
 		double spacing = 1;//m
@@ -69,8 +69,8 @@ public class Grid implements Drawable
 		{
 			Vector2D absSt = new Vector2D(startX, topleft.Y);
 			Vector2D absEn = new Vector2D(startX, bottomright.Y);
-			Vector2D screenSt = trussView.toDrawableCoord(absSt);
-			Vector2D screenEn = trussView.toDrawableCoord(absEn);
+			Vector2D screenSt = viewControl.toDrawableCoord(absSt);
+			Vector2D screenEn = viewControl.toDrawableCoord(absEn);
 			canvas.drawLine((float) screenSt.X, (float) screenSt.Y, (float) screenEn.X, (float) screenEn.Y - 2, paint);
 			canvas.drawText(String.format("%.2f", startX) + "", (float) screenEn.X + 2, (float) screenEn.Y, paint);
 			startX += spacing;
@@ -83,8 +83,8 @@ public class Grid implements Drawable
 		{
 			Vector2D absSt = new Vector2D(topleft.X, startY);
 			Vector2D absEn = new Vector2D(bottomright.X, startY);
-			Vector2D screenSt = trussView.toDrawableCoord(absSt);
-			Vector2D screenEn = trussView.toDrawableCoord(absEn);
+			Vector2D screenSt = viewControl.toDrawableCoord(absSt);
+			Vector2D screenEn = viewControl.toDrawableCoord(absEn);
 			canvas.drawLine((float) screenSt.X, (float) screenSt.Y, (float) screenEn.X, (float) screenEn.Y, paint);
 			canvas.drawText(String.format("%.2f", startY) + "", (float) screenSt.X + 2, (float) screenSt.Y - 2, paint);
 			startY += spacing;
@@ -93,7 +93,7 @@ public class Grid implements Drawable
 	}
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
 		return null;
 	}

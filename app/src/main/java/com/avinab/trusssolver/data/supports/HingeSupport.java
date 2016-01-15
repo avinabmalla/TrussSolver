@@ -5,7 +5,7 @@ import android.graphics.Path;
 
 import com.avinab.trusssolver.data.Node;
 import com.avinab.trusssolver.math.Vector2D;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 
 /**
@@ -23,7 +23,7 @@ public class HingeSupport extends Support
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView view)
+	public void Draw(Canvas canvas, ViewControl view)
 	{
 		Vector2D p = view.toDrawableCoord(this.getNode().Location);
 		Vector2D p1;

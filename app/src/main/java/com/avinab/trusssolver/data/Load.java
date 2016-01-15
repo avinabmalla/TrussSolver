@@ -12,7 +12,7 @@ import com.avinab.trusssolver.Global;
 import com.avinab.trusssolver.math.Matrix2x2;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.Drawable;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 import java.text.DecimalFormat;
 
@@ -95,7 +95,7 @@ public class Load implements Drawable
 		}
 	}
 
-	public void Draw(Canvas canvas, TrussView trussview)
+	public void Draw(Canvas canvas, ViewControl trussview)
 	{
 		setUpPaints();
 		Vector2D point;
@@ -135,13 +135,13 @@ public class Load implements Drawable
 	}
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
 		//TODO: inplement bounds
-		return this.getNode().getBounds(trussView);
+		return this.getNode().getBounds(viewControl);
 	}
 
-	void arrowCoords(TrussView trussview)
+	void arrowCoords(ViewControl trussview)
 	{
 		Vector2D point = trussview.toDrawableCoord(this.getNode().Location);
 
@@ -161,7 +161,7 @@ public class Load implements Drawable
 
 	}
 
-	public double DistanceFromPoint(double X, double Y, TrussView m)
+	public double DistanceFromPoint(double X, double Y, ViewControl m)
 	{
 		arrowCoords(m);
 		Vector2D A = end;

@@ -11,7 +11,7 @@ import com.avinab.trusssolver.data.supports.RollerSupport;
 import com.avinab.trusssolver.data.supports.Support;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.Drawable;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 import java.util.ArrayList;
 
@@ -84,9 +84,9 @@ public class Node implements Drawable
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView trussView)
+	public void Draw(Canvas canvas, ViewControl viewControl)
 	{
-		Vector2D p1 = trussView.toDrawableCoord(Location);
+		Vector2D p1 = viewControl.toDrawableCoord(Location);
 		Paint pnt = new Paint(Selected ? selectedPaint : paint);
 
 
@@ -119,7 +119,7 @@ public class Node implements Drawable
 	}
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
 		return new Bounds(Location);
 	}

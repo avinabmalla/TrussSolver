@@ -10,7 +10,7 @@ import com.avinab.trusssolver.analysis.MemberStiffnessMatrix;
 import com.avinab.trusssolver.math.Matrix2x2;
 import com.avinab.trusssolver.math.Vector2D;
 import com.avinab.trusssolver.widgets.Drawable;
-import com.avinab.trusssolver.widgets.TrussView;
+import com.avinab.trusssolver.widgets.ViewControl;
 
 import java.text.DecimalFormat;
 
@@ -105,10 +105,10 @@ public class Member implements Drawable
 	}
 
 	@Override
-	public void Draw(Canvas canvas, TrussView trussView)
+	public void Draw(Canvas canvas, ViewControl viewControl)
 	{
-		Vector2D p1 = trussView.toDrawableCoord(getFromNode().Location);
-		Vector2D p2 = trussView.toDrawableCoord(getToNode().Location);
+		Vector2D p1 = viewControl.toDrawableCoord(getFromNode().Location);
+		Vector2D p2 = viewControl.toDrawableCoord(getToNode().Location);
 
 		setupPaint();
 		if (Selected)
@@ -121,15 +121,15 @@ public class Member implements Drawable
 	}
 
 	@Override
-	public Bounds getBounds(TrussView trussView)
+	public Bounds getBounds(ViewControl viewControl)
 	{
-		Bounds ret = getFromNode().getBounds(trussView);
-		ret.add(getToNode().getBounds(trussView));
+		Bounds ret = getFromNode().getBounds(viewControl);
+		ret.add(getToNode().getBounds(viewControl));
 		return ret;
 	}
 
 
-	public double DistanceFromPoint(double X, double Y, TrussView m)
+	public double DistanceFromPoint(double X, double Y, ViewControl m)
 	{
 		Vector2D A = m.toDrawableCoord(getFromNode().Location);
 		Vector2D B = m.toDrawableCoord(getToNode().Location);
@@ -238,7 +238,7 @@ public class Member implements Drawable
 	}
 
 
-	public void DrawSolvedMember(TrussView view, Canvas canvas, double maxTF, double maxCF, double minTF, double minCF)
+	public void DrawSolvedMember(ViewControl view, Canvas canvas, double maxTF, double maxCF, double minTF, double minCF)
 	{
 		setupPaint();
 		Paint memPaint = new Paint(paint);
